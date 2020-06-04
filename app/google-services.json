@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "994607809013",
+    "firebase_url": "https://locals-e37c4.firebaseio.com",
+    "project_id": "locals-e37c4",
+    "storage_bucket": "locals-e37c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994607809013:android:ed36b3c824daf5b7d4a0bc",
+        "android_client_info": {
+          "package_name": "com.ratnesh.locals"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994607809013-ej9prtsn3dh2ejf60qqfhhnp7etqrhpr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKfhn0fUJxuqIvvVpinibXsgHilb72Dj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994607809013-ej9prtsn3dh2ejf60qqfhhnp7etqrhpr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
