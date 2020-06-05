@@ -28,18 +28,19 @@ import com.squareup.picasso.Picasso;
 
 public class All_Orders extends AppCompatActivity {
     RecyclerView orderRecycler;
-
+    TextView emptyOrders;
     DatabaseReference order_reference;
     LinearLayoutManager layoutManager;
     FirebaseDatabase databaseReference;
     String uid;
     String TAG="OrderPage";
-    private FirebaseRecyclerAdapter adapter,cat_adapter;
+    private FirebaseRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all__orders);
+
         SharedPreferences check=getSharedPreferences("Local_preference",MODE_PRIVATE);
         uid=check.getString("uid","");
         if(uid==null){
@@ -52,6 +53,8 @@ public class All_Orders extends AppCompatActivity {
 
         databaseReference= FirebaseDatabase.getInstance();
         order_reference=databaseReference.getReference().child("Orders").child(uid);
+        emptyOrders=findViewById(R.id.emptyOrders);
+
         orderRecycler=findViewById(R.id.orderRecycler);
         layoutManager = new LinearLayoutManager(this);
         orderRecycler.setLayoutManager(layoutManager);
@@ -153,8 +156,7 @@ public class All_Orders extends AppCompatActivity {
         public void setOrderAddress(String address) {
             OrderAddress.setText(address);
         }
-        public void setpaymentStatus(String status) {
-            OrderStatus.setText(status);
+        public void setpaymentStatus(String status) { PaymentStatus.setText(status);
         }
 
     }

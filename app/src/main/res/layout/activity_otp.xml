@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     tools:context=".OtpActivity">
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"       />
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,6 +25,7 @@
             android:layout_height="match_parent"
             android:elevation="4dp"
             android:background="@color/colorPrimary">
+
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
@@ -21,7 +33,7 @@
                 android:layout_marginTop="40dp"
                 android:fontFamily="@font/acme"
                 android:gravity="center"
-                android:text="Locals"
+                android:text="@string/app_name_underlined"
                 android:textSize="35dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -70,21 +82,10 @@
                 android:fontFamily="@font/acme"
                 android:gravity="center"
                 android:text="Local Customer"
-                android:textColor="#000000"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
-    <ProgressBar
-        android:id="@+id/progressbar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"       />
+
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -93,10 +94,10 @@
                 android:layout_marginHorizontal="60dp"
                 android:elevation="8dp"
                 android:orientation="vertical"
-                android:layout_marginTop="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView10">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -111,6 +112,7 @@
                     android:id="@+id/otp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
                     android:background="@drawable/edittext_layout"
                     android:gravity="center"
                     android:hint="OTP"
@@ -132,6 +134,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:background="@drawable/rounded_button"
+                    android:elevation="8dp"
                     android:text="Verify" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,7 +32,7 @@ public class Login_Phone extends AppCompatActivity {
 
                 String number = phn.getText().toString().trim();
 
-                if (number.isEmpty() || number.length() < 10) {
+                if (number.length() != 10 ) {
                     phn.setError("Valid number is required");
                     phn.requestFocus();
                     return;

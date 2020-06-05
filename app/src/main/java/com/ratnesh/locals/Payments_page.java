@@ -113,8 +113,10 @@ Payments_page extends AppCompatActivity {
         deliveryAdd2.setText(mypref.getString("add2",""));
         deliveryAdd3.setText(mypref.getString("add3",""));
 
-        cartTotal.setText(sum+"");
-        totalCharge.setText(String.valueOf(sum+10));
+        cartTotal.setText("Rs "+sum+"");
+        int payable=sum+10;
+        Log.w(TAG,"payable=>"+payable);
+        totalCharge.setText("Rs "+payable);
 
         cartRef=FirebaseDatabase.getInstance().getReference().child("Cart").child(uid);
         orderRef= FirebaseDatabase.getInstance().getReference().child("Orders").child(uid);
@@ -165,6 +167,7 @@ Payments_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(Payments_page.this,User_details.class);
+                intent.putExtra("from","payment");
                 startActivity(intent);
             }
         });
@@ -180,6 +183,10 @@ Payments_page extends AppCompatActivity {
 
                 Log.w(TAG,"Order ID=>"+key);
                 moveRecord(cartRef,orderRef.child(key).child("OrderList"));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                 startActivity(intent);
             }
         });
@@ -417,6 +424,9 @@ Payments_page extends AppCompatActivity {
                 intent.putExtra("orderId",key);
 
                 moveRecord(cartRef,orderRef.child(key).child("OrderList"));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                 startActivity(intent);
                 Log.e("UPI", "payment successfull: "+approvalRefNo);

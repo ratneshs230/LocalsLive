@@ -40,7 +40,7 @@ import java.util.Map;
 import static java.lang.Integer.parseInt;
 
 public class Cart extends AppCompatActivity {
-    TextView total;
+    TextView total,totalText;
     RecyclerView cart_recycler;
     Button payment;
     RecyclerView.LayoutManager layoutManager;
@@ -80,6 +80,7 @@ public class Cart extends AppCompatActivity {
         total = findViewById(R.id.subtotal);
         payment = findViewById(R.id.payment_navigate);
         cart_recycler = findViewById(R.id.cart_recycler);
+        totalText=findViewById(R.id.totalText);
 
 
         model = new Cart_model();
@@ -97,7 +98,7 @@ public class Cart extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Cart.this, User_details.class);
 
-
+                intent.putExtra("from","cart");
                 editor.putInt("cartSum", subtotal());
                 editor.apply();
 
@@ -121,6 +122,10 @@ public class Cart extends AppCompatActivity {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
                     price.add(ds.child("total_price").getValue(String.class));
+                }
+                if(price.size()==0){
+                    totalText.setText("Cart is Currently Empty");
+                    payment.setEnabled(false);
                 }
                 Log.w(TAG, "Price-=>" + price + "Size" + price.size());
                 editor.putString("cartCount",String.valueOf(price.size()));

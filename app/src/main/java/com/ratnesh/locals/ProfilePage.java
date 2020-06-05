@@ -115,25 +115,35 @@ public class ProfilePage extends AppCompatActivity {
     }
 
     private void fetch() {
+        try {
+            ref.child("Details").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    user_model = dataSnapshot.getValue(User_model.class);
+                    if(!dataSnapshot.exists()){
+                        Toast.makeText(ProfilePage.this,"Please enter your details first",Toast.LENGTH_LONG).show();
 
-        ref.child("Details").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                user_model=dataSnapshot.getValue(User_model.class);
-                nameText.setText(user_model.getName());
-                add1Text.setText(user_model.getAdd1());
-                add2Text.setText(user_model.getAdd2());
-                add3Text.setText(user_model.getAdd3());
-                phoneText.setText(user_model.getPhn());
-            }
+                        Intent intent=new Intent(ProfilePage.this,User_details.class);
+                        intent.putExtra("from","profile");
+                        startActivity(intent);
+                    }else {
+                        nameText.setText(user_model.getName());
+                        add1Text.setText(user_model.getAdd1());
+                        add2Text.setText(user_model.getAdd2());
+                        add3Text.setText(user_model.getAdd3());
+                        phoneText.setText(user_model.getPhn());
+                    }
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+
     }
-
-
-
 }

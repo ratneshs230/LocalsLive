@@ -13,12 +13,12 @@
         <shape android:shape="rectangle">
             <gradient
                 android:angle="90"
-                android:endColor="@color/colorPrimary"
-                android:startColor="#8bc34a"
+                android:endColor="@color/colorSecondary"
+                android:startColor="@color/colorSecondary"
                 android:type="linear" />
-            <corners android:radius="10dp" />
             <stroke android:color="@color/colorPrimaryDark"
-                android:width="3dp"/>
-        </shape>
+                android:width="2dp"/>
+            <corners android:radius="10dp" />
+                    </shape>
     </item>
 </ripple>

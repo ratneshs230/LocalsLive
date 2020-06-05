@@ -78,10 +78,11 @@ public class HomePage extends AppCompatActivity implements PopupMenu.OnMenuItemC
         title=findViewById(R.id.page_title);
         btn=findViewById(R.id.add_btn);
         product_object=new HashMap<>();
-        layoutManager = new GridLayoutManager(this, 3);
-        products_recycler.setLayoutManager(layoutManager);
         cart_btn=findViewById(R.id.cart_btn);
         cat_btn=findViewById(R.id.cat_btn);
+
+        layoutManager = new GridLayoutManager(this,4);
+        products_recycler.setLayoutManager(layoutManager);
 
         if(no!=null && no.equals("+911111222233")){
             btn.setVisibility(View.VISIBLE);

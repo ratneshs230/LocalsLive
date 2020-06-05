@@ -16,10 +16,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
-        <TextView
+<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Subtotal  Rs"
+            android:id="@+id/totalText"
             android:padding="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,7 +46,10 @@
         android:layout_height="wrap_content"
         android:text="Proceed to Payout"
         android:layout_margin="20dp"
+        android:textSize="20dp"
+        android:elevation="8dp"
         android:background="@drawable/rounded_button"
-        app:layout_constraintBottom_toBottomOf="parent" />
+         app:layout_constraintBottom_toBottomOf="parent"
+            />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

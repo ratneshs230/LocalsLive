@@ -27,11 +27,19 @@ public class User_details extends AppCompatActivity {
         String key,TAG="UserDetails";
         DatabaseReference ref;
         User_model model;
-
+        String from;
+        Intent toIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
+
+
+        if ( getIntent().getStringExtra("from").equals("cart") || getIntent().getStringExtra("from").equals("payment"))
+            toIntent = new Intent(User_details.this, Payments_page.class);
+        else if(getIntent().getStringExtra("from").equals("profile"))
+            toIntent = new Intent(User_details.this, ProfilePage.class);
+
 
         SharedPreferences pref=getSharedPreferences("Local_preference",MODE_PRIVATE);
         uid=pref.getString("uid","");
@@ -88,7 +96,7 @@ public class User_details extends AppCompatActivity {
                     } else if (TextUtils.isEmpty(add3.getText().toString().trim())) {
 
                         Toast.makeText(User_details.this, "Please fill in the City", Toast.LENGTH_SHORT).show();
-                    }else{
+                    }else {
                         model.setUid(uid);
                         model.setName(name.getText().toString());
                         model.setAdd1(add1.getText().toString());
@@ -97,14 +105,13 @@ public class User_details extends AppCompatActivity {
                         model.setPhn(phn.getText().toString());
 
 
-                        Log.w(TAG,model.getUid()+"");
-                        Log.w(TAG,model.getName()+"");
+                        Log.w(TAG, model.getUid() + "");
+                        Log.w(TAG, model.getName() + "");
 
                         saveDetail();
 
 
-                        Intent intent=new Intent(User_details.this,Payments_page.class);
-                        startActivity(intent);
+                        startActivity(toIntent);
                     }
 
             }

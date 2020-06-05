@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Locals</string>
+
+    <string name="app_name_underlined">
+    <u>    Locals
+    </u>
+    </string>
 </resources>
